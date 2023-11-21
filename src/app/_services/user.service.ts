@@ -9,7 +9,7 @@ export class UserService {
 
   PATH_OF_API = "http://localhost:9090";
   requestHeader = new HttpHeaders(
-    {"No-Auth": "True"}
+    { "No-Auth": "True" }
   );
 
   constructor(private httpClient: HttpClient, private userAuthService: UserAuthService) { }
@@ -20,8 +20,19 @@ export class UserService {
 
   public roleMatch(allowedRoles: any): boolean {
     let isMatch = false;
-    const userRole: any = this.userAuthService.getRoles();
-
+    const userRoles: any = this.userAuthService.getRoles();
+    if (userRoles != null && userRoles) {
+      for (let i = 0; i < userRoles.length; i++) {
+        for (let j = 0; j < allowedRoles.length; j++) {
+          if (userRoles[i].roleName === allowedRoles[j]) {
+            isMatch = true;
+            return isMatch;
+          } else {
+            return isMatch;
+          }
+        }
+      }
+    }
     return isMatch;
   }
 
