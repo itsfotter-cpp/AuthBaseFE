@@ -12,7 +12,7 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { AuthGuard, authGuard } from './_auth/auth.guard';
+import { AuthGuard } from './_auth/auth.guard';
 import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
 
@@ -34,7 +34,6 @@ import { UserService } from './_services/user.service';
     RouterModule
   ],
   providers: [
-    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

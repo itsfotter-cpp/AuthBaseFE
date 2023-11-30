@@ -2,7 +2,9 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Router } from "@angular/router";
 import { catchError, Observable, throwError } from "rxjs";
 import { UserAuthService } from "../_services/user-auth.service";
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
     constructor(
@@ -27,8 +29,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     return throwError("Something is wrong");
                 }
                 
-            );
-        );
+            ));
     }
 
     private addToken(request: HttpRequest<any>, token: string) {
