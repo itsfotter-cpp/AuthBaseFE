@@ -17,16 +17,16 @@ export class AdminComponent implements OnInit{
   }
 
   forAdmin() {
-    this.userService.forAdmin().subscribe(
-      (response) => {
+    this.userService.forAdmin().subscribe({
+      next: (response: any) => {
         console.log(response);
         this.message = response;
       },
-      (error) => {
+      error: (error: any) => {
         console.log(error);
         this.message = error;
       }
-    )
+    });
   }
 
 }

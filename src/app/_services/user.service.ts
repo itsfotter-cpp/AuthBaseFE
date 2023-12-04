@@ -10,7 +10,7 @@ import { Role } from '../model/role';
 })
 export class UserService {
 
-  PATH_OF_API = "http://localhost:9090";
+  PATH_OF_API = "https://localhost:9090";
   requestHeader = new HttpHeaders(
     { "No-Auth": "True" }
   );

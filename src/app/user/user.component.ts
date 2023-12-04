@@ -17,16 +17,16 @@ export class UserComponent implements OnInit{
   }
 
   forUser() {
-    this.userService.forUser().subscribe(
-      (response) => {
+    this.userService.forUser().subscribe({
+      next: (response: any) => {
         console.log(response);
         this.message = response;
       },
-      (error) => {
+      error: (error: any) => {
         console.log(error);
         this.message = error;
       }
-    )
+    });
   }
 
 }

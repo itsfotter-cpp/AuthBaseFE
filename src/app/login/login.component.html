@@ -1,8 +1,8 @@
 
 <div class="card mt-5 p-4">
-    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-        <input type="text" class="form-control mb-3" ngModel name="userName" id="userName" placeholder="Username">
-        <input type="password" class="form-control mb-3" ngModel name="userPassword" id="userPassword" placeholder="Password">
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+        <input type="text" class="form-control mb-3" name="userName" formControlName="userName" id="userName" placeholder="Username">
+        <input type="password" class="form-control mb-3" name="userPassword" formControlName="userPassword" id="userPassword" placeholder="Password">
         <div class="row justify-content-center">
             <div class="col-4">
                 <button type="submit" class="btn btn-outline-success form-control">Login</button>

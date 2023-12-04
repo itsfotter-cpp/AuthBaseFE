@@ -1,48 +1,40 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { UserService } from '../_services/user.service';
 import { UserAuthService } from '../_services/user-auth.service';
 import { Router } from '@angular/router';
 import { JwtResponse } from '../model/jwt-response';
-import { Role } from '../model/role';
+import { JwtRequest } from '../model/jwt-request';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
-  jwtResponse: JwtResponse | undefined;
+  jwtResponse!: JwtResponse;
+  jwtRequest!: JwtRequest;
+  loginForm!: FormGroup;
 
   constructor(private userService: UserService, private userAuthService: UserAuthService, private router: Router) {
 
   }
-
-  /*
-  login(loginForm: NgForm) {
-    this.userService.login(loginForm.value).subscribe({
-      next: (res: any) => {
-        this.userAuthService.setRoles(res.user.role);
-        this.userAuthService.setToken(res.jwtToken);
-        const role = res.user.role[0].roleName;
-        
-        if(role === "admin") {
-          this.router.navigate(['/admin']);
-        } else {
-          this.router.navigate(['/user']);
-        }
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
+  ngOnInit(): void {
+    this.loginForm = new FormGroup({
+      userName: new FormControl('', [Validators.required]),
+      userPassword: new FormControl('', [Validators.required])
+    })
   }
-  */
-  
   
   login(loginForm: NgForm) {
-    this.userService.login(loginForm.value).subscribe({
+
+    this.jwtRequest = {
+      userName: this.loginForm.get('userName')?.value,
+      userPassword: this.loginForm.get('userPassword')?.value
+    };
+
+    this.userService.login(this.jwtRequest).subscribe({
       next: (res: JwtResponse) => {
         this.jwtResponse = res;
         this.userAuthService.setRoles(this.jwtResponse.user.role);
