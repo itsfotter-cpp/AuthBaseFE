@@ -15,3 +15,6 @@ but with some updates:
   <li>Implementation Role class</li>
   <li>Updates on deprecated function</li>
 </ul>
+
+## Notes
+the backend is also on my github profile at the link <url> https://github.com/itsfotter-cpp/AuthBaseBE </url>
