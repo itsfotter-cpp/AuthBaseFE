@@ -15,7 +15,7 @@ export class HeaderComponent {
   constructor(
     private userAuthService: UserAuthService, 
     private router: Router,
-    private userService: UserService) {
+    userService: UserService) {
       this._userService = userService;
   }
 
