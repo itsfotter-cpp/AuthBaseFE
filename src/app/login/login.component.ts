@@ -3,8 +3,8 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { UserService } from '../_services/user.service';
 import { UserAuthService } from '../_services/user-auth.service';
 import { Router } from '@angular/router';
-import { JwtResponse } from '../model/jwt-response';
-import { JwtRequest } from '../model/jwt-request';
+import { JwtResponse } from '../model/dto/jwt-response';
+import { JwtRequest } from '../model/dto/jwt-request';
 
 @Component({
   selector: 'app-login',

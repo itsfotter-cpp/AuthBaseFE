@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Role } from '../model/role';
+import { RoleResponse } from '../model/dto/role-response';
 
 
 /*
@@ -13,7 +14,7 @@ export class UserAuthService {
 
   constructor() { }
 
-  public setRoles(roles: Role[]) {
+  public setRoles(roles: RoleResponse[]) {
     localStorage.setItem("roles", JSON.stringify(roles));
   }
 

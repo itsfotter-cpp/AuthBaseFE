@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserAuthService } from './user-auth.service';
 import { Observable } from 'rxjs';
-import { JwtResponse } from '../model/jwt-response';
+import { JwtResponse } from '../model/dto/jwt-response';
 import { Role } from '../model/role';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { Role } from '../model/role';
 })
 export class UserService {
 
-  PATH_OF_API = "https://localhost:9090";
+  PATH_OF_API = "http://localhost:9090";
   requestHeader = new HttpHeaders(
     { "No-Auth": "True" }
   );
