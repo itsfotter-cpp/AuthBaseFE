@@ -19,7 +19,6 @@ export class UserAuthService {
   }
 
   public getRoles(): Role[] {
-    //console.log("LS ROLE:" + localStorage.getItem('roles'));
     return JSON.parse(localStorage.getItem('roles')!);
   }
 

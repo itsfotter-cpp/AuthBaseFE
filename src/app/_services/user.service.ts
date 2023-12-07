@@ -4,13 +4,14 @@ import { UserAuthService } from './user-auth.service';
 import { Observable } from 'rxjs';
 import { JwtResponse } from '../model/dto/jwt-response';
 import { Role } from '../model/role';
+import { UserResponse } from '../model/dto/user-response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  PATH_OF_API = "http://localhost:9090";
+  PATH_OF_API = "http://localhost:9090/api";
   requestHeader = new HttpHeaders(
     { "No-Auth": "True" }
   );
@@ -19,16 +20,20 @@ export class UserService {
 
   constructor(private httpClient: HttpClient, private userAuthService: UserAuthService) { }
 
-  public login(loginData: any):Observable<JwtResponse> {    
+  public login(loginData: any) : Observable<JwtResponse> {    
     return this.httpClient.post<JwtResponse>(this.PATH_OF_API + "/authenticate", loginData, { headers: this.requestHeader });
   }
 
+  public registerNewUser(userData: any) : Observable<UserResponse> {
+      return this.httpClient.post<UserResponse>(this.PATH_OF_API + "/user/registerNewUser", userData);
+  }
+
   public forUser() {
-    return this.httpClient.get(this.PATH_OF_API + "/forUser", {responseType: "text"});
+    return this.httpClient.get(this.PATH_OF_API + "/user/forUser", {responseType: "text"});
   }
 
   public forAdmin() {
-    return this.httpClient.get(this.PATH_OF_API + "/forAdmin", {responseType: "text"});
+    return this.httpClient.get(this.PATH_OF_API + "/user/forAdmin", {responseType: "text"});
   }
 
   public roleMatch(allowedRoles: any): boolean {

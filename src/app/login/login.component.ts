@@ -5,6 +5,7 @@ import { UserAuthService } from '../_services/user-auth.service';
 import { Router } from '@angular/router';
 import { JwtResponse } from '../model/dto/jwt-response';
 import { JwtRequest } from '../model/dto/jwt-request';
+import { EMPTY, catchError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit{
   constructor(private userService: UserService, private userAuthService: UserAuthService, private router: Router) {
 
   }
+  
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       userName: new FormControl('', [Validators.required]),
@@ -34,8 +36,12 @@ export class LoginComponent implements OnInit{
       userPassword: this.loginForm.get('userPassword')?.value
     };
 
-    this.userService.login(this.jwtRequest).subscribe({
-      next: (res: JwtResponse) => {
+    this.userService.login(this.jwtRequest).pipe(
+      catchError(() => {
+        return EMPTY;
+      })
+    ).subscribe(
+      (res: JwtResponse) => {
         this.jwtResponse = res;
         this.userAuthService.setRoles(this.jwtResponse.user.role);
         this.userAuthService.setToken(this.jwtResponse.jwtToken);              
@@ -45,11 +51,8 @@ export class LoginComponent implements OnInit{
         } else {
           this.router.navigate(['/user']);
         }
-      },
-      error : (err: any) => {
-        console.log(err);
       }
-    });
+    );
   }
   
 

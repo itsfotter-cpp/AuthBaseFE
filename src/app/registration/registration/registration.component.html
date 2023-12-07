@@ -1,1 +1,53 @@
-<p>registration works!</p>
+<div class="row justify-content-center mt-3">
+    <div class="col-6">
+
+        <h2>Registration</h2>
+        <form [formGroup]="registrationForm">
+            <div class="input-group mb-3">
+                <span class="input-group-text">First and Last name</span>
+                <input type="text" aria-label="First name" class="form-control" formControlName="userFirstName">
+                <input type="text" aria-label="Last name" class="form-control" formControlName="userLastName">
+            </div>
+            
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" formControlName="email">
+              </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="username">Username</span>
+                <input type="text" class="form-control" aria-label="Username" aria-describedby="username" formControlName="userName">
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" class="form-control" aria-describedby="passwordHelpBlock" formControlName="userPassword" />
+                <!--
+            <div id="passwordHelpBlock" class="form-text">
+                Your password must be 8-20 characters long, contain letters and numbers, and
+                must not contain spaces, special characters, or emoji.
+            </div>
+            -->
+            </div>
+
+            <div class="mb-3">
+                <label for="rPassword" class="form-label">Conferma Password</label>
+                <input type="password" id="rPassword" class="form-control" aria-describedby="passwordHelpBlock" formControlName="rUserPassword" />
+                <!--
+            <div id="passwordHelpBlock" class="form-text">
+                Your password must be 8-20 characters long, contain letters and numbers, and
+                must not contain spaces, special characters, or emoji.
+            </div>
+            -->
+            </div>
+
+            <div class="alert alert-danger" role="alert" *ngIf="registrationForm.hasError('matchFields')">
+                A simple danger alert with. Give it a click if you like.
+              </div>
+
+            <div class="d-grid gap-2">
+                <button class="btn btn-success" type="submit" [disabled]="!registrationForm.valid" (click)="register()">Save</button>
+              </div>
+        </form>
+    </div>
+</div>

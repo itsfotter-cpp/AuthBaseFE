@@ -12,10 +12,13 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { AuthGuard } from './_auth/auth.guard';
 import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
 import { RegistrationComponent } from './registration/registration/registration.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GestionePresenzeComponent } from './gestione-presenze/gestione-presenze.component';
+import { InserimentoRichiestaComponent } from './inserimento-richiesta/inserimento-richiesta.component';
 
 @NgModule({
   declarations: [
@@ -26,15 +29,22 @@ import { RegistrationComponent } from './registration/registration/registration.
     LoginComponent,
     HeaderComponent,
     ForbiddenComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    GestionePresenzeComponent,
+    InserimentoRichiestaComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      positionClass: 'toast-top-center'
+    })
   ],
   providers: [
     {

@@ -10,13 +10,19 @@
             <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/gestione-presenze" *ngIf="_userService.roleMatch(['admin'])">Gestione Presenze</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/inserimento-richiesta">Inserimento Richiesta</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/admin" *ngIf="_userService.roleMatch(['admin'])">Admin Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/user" *ngIf="_userService.roleMatch(['user'])">User Dashboard</a>
           </li>
         </ul>
-        <button *ngIf="isLoggedIn() && _userService.roleMatch(['admin'])" type="button" class="btn btn-light mx-2">Register</button>
+        <button *ngIf="isLoggedIn() && _userService.roleMatch(['admin'])" type="button" class="btn btn-light mx-2" routerLink="/registration">Register</button>
         <button *ngIf="!isLoggedIn()" type="button" class="btn btn-success mx-2" routerLink="/login">Login</button>
         <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()">Logout</button>
       </div>
