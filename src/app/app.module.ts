@@ -17,8 +17,8 @@ import { UserService } from './_services/user.service';
 import { RegistrationComponent } from './registration/registration/registration.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { GestionePresenzeComponent } from './gestione-presenze/gestione-presenze.component';
 import { InserimentoRichiestaComponent } from './inserimento-richiesta/inserimento-richiesta.component';
+import { GestioneRichiesteComponent } from './gestione-richieste/gestione-richieste.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +30,8 @@ import { InserimentoRichiestaComponent } from './inserimento-richiesta/inserimen
     HeaderComponent,
     ForbiddenComponent,
     RegistrationComponent,
-    GestionePresenzeComponent,
     InserimentoRichiestaComponent,
+    GestioneRichiesteComponent,
   ],
   imports: [
     BrowserModule,

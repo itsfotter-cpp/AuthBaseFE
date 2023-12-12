@@ -7,7 +7,6 @@ import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AuthGuard } from './_auth/auth.guard';
 import { RegistrationComponent } from './registration/registration/registration.component';
-import { GestionePresenzeComponent } from './gestione-presenze/gestione-presenze.component';
 import { InserimentoRichiestaComponent } from './inserimento-richiesta/inserimento-richiesta.component';
 
 const routes: Routes = [
@@ -17,8 +16,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'forbidden', component: ForbiddenComponent},
-  {path: 'gestione-presenze', component: GestionePresenzeComponent},
-  {path: 'inserimento-richiesta', component: InserimentoRichiestaComponent}
+  {path: 'inserimento-richiesta', component: InserimentoRichiestaComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({

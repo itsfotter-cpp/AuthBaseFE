@@ -4,11 +4,11 @@
             <div class="card-body">
                 <h3>Inserimento Richiesta</h3>
 
-                <form>
+                <form [formGroup]="insertRequestForm">
 
                     <div class="mb-3">
                         <label for="selectType" class="form-label">Tipo di giustificativo</label>
-                        <select id="selectType" class="form-select" [(ngModel)]="selectedItem">
+                        <select id="selectType" class="form-select" formControlName="typeDemand">
                             <option *ngFor="let item of types" [value]="item.idType">{{ item.typeDescription }}</option>
                         </select>
                     </div>
@@ -17,13 +17,13 @@
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="dataAbsenceStart" class="form-label">Data Inizio Assenza</label>
-                                <input type="date" class="form-control" id="dataAbsenceStart">
+                                <input type="date" class="form-control" id="dataAbsenceStart" formControlName="absenceDateStart">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="dataAbsenceEnd" class="form-label">Data Fine Assenza</label>
-                                <input type="date" class="form-control" id="dataAbsenceEnd">
+                                <input type="date" class="form-control" id="dataAbsenceEnd" formControlName="absenceDateEnd">
                             </div>
                         </div>
                     </div>
@@ -32,24 +32,24 @@
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="timeAbsenceStart" class="form-label">Ora Inizio Assenza</label>
-                                <input type="time" class="form-control" id="timeAbsenceStart">
+                                <input type="time" class="form-control" id="timeAbsenceStart" formControlName="absenceTimeStart">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="timeAbsenceEnd" class="form-label">Ora Fine Assenza</label>
-                                <input type="time" class="form-control" id="timeAbsenceEnd">
+                                <input type="time" class="form-control" id="timeAbsenceEnd" formControlName="absenceTimeEnd">
                             </div>
                         </div>
                     </div>
 
                     <div class="mb-3">
-                        <label for="note" class="form-label">Note</label>
-                        <textarea class="form-control" id="note" rows="3"></textarea>
+                        <label for="note" class="form-label">Note</label> 
+                        <textarea class="form-control" id="note" rows="3" formControlName="note"></textarea>
                     </div>
 
                     <div class="d-grid gap-2">
-                        <button class="btn btn-success" type="button">Inserisci</button>
+                        <button class="btn btn-success" type="button" [disabled]="!insertRequestForm.valid" (click)="insertRequest()">Inserisci</button>
                     </div>
 
                 </form>

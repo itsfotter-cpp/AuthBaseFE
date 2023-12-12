@@ -13,7 +13,7 @@
             <a class="nav-link active" aria-current="page" routerLink="/gestione-presenze" *ngIf="_userService.roleMatch(['admin'])">Gestione Presenze</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/inserimento-richiesta">Inserimento Richiesta</a>
+            <a class="nav-link active" aria-current="page" routerLink="/inserimento-richiesta" *ngIf="isLoggedIn()">Inserimento Richiesta</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/admin" *ngIf="_userService.roleMatch(['admin'])">Admin Dashboard</a>

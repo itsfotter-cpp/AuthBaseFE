@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DemandService } from '../_services/demand.service';
 import { TypeDemand } from '../model/type-demand';
 import { EMPTY, catchError } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Demand } from '../model/demand';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inserimento-richiesta',
@@ -11,9 +15,10 @@ import { EMPTY, catchError } from 'rxjs';
 export class InserimentoRichiestaComponent implements OnInit{
 
   types: TypeDemand[] = [];
-  selectedItem: TypeDemand | undefined;
+  insertRequestForm!: FormGroup;
+  demand!: Demand;
 
-  constructor(private demandService: DemandService) {
+  constructor(private demandService: DemandService, private router: Router) {
 
   }
 
@@ -28,10 +33,35 @@ export class InserimentoRichiestaComponent implements OnInit{
         this.types = data;
       }
     )
-  
 
+    this.insertRequestForm = new FormGroup({
+      typeDemand: new FormControl('', [Validators.required]),
+      absenceDateStart: new FormControl('', [Validators.required]),
+      absenceDateEnd: new FormControl(''),
+      absenceTimeStart: new FormControl(''),
+      absenceTimeEnd: new FormControl(''),
+      note: new FormControl('')
+    });
+  
   }
 
+  insertRequest() {
+    
+    this.demand = {
+      ...this.insertRequestForm.value
+    }
+
+    this.demandService.insertNewDemandRequest(this.demand).pipe(
+      catchError((err: HttpErrorResponse) => {
+        return EMPTY;
+      })
+    ).subscribe(
+      () => {
+        this.router.navigateByUrl('/home');
+      }
+    )
+
+  }
 
 
 }
