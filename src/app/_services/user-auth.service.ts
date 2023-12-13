@@ -14,6 +14,14 @@ export class UserAuthService {
 
   constructor() { }
 
+  public setInfo(info: string) {
+    localStorage.setItem("info", JSON.stringify(info));
+  }
+
+  public getInfo(): string {
+    return JSON.parse(localStorage.getItem("info")!);
+  }
+
   public setRoles(roles: RoleResponse[]) {
     localStorage.setItem("roles", JSON.stringify(roles));
   }

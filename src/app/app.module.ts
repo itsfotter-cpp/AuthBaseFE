@@ -19,41 +19,45 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InserimentoRichiestaComponent } from './inserimento-richiesta/inserimento-richiesta.component';
 import { GestioneRichiesteComponent } from './gestione-richieste/gestione-richieste.component';
+import { DatePipe } from '@angular/common';
+import { DaysBetweenDatesPipe } from './shared/days-between-dates.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    AdminComponent,
-    UserComponent,
-    LoginComponent,
-    HeaderComponent,
-    ForbiddenComponent,
-    RegistrationComponent,
-    InserimentoRichiestaComponent,
-    GestioneRichiesteComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    RouterModule,
-    ToastrModule.forRoot({
-      timeOut: 4000,
-      positionClass: 'toast-top-center'
-    })
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
-    UserService
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        AdminComponent,
+        UserComponent,
+        LoginComponent,
+        HeaderComponent,
+        ForbiddenComponent,
+        RegistrationComponent,
+        InserimentoRichiestaComponent,
+        GestioneRichiesteComponent
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        },
+        UserService,
+        DatePipe
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        RouterModule,
+        ToastrModule.forRoot({
+            timeOut: 4000,
+            positionClass: 'toast-top-center'
+        }),
+        DaysBetweenDatesPipe
+    ]
 })
 export class AppModule { }

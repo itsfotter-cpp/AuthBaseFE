@@ -1,12 +1,12 @@
 import { Time } from "@angular/common";
 import { StateDemand } from "./state-demand";
-import { TypeDemand } from "./type-demand";
 
 export interface Demand {
     idDemand: number;
     dateDemand: Date;
-    stateDemand: StateDemand;
+    stateDemand: string;
     typeDemand: number;
+    user: string;
     absenceDateStart: Date;
     absenceDateEnd: Date;
     absenceTimeStart: Time;

@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Demand } from '../model/demand';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { UserAuthService } from '../_services/user-auth.service';
 
 @Component({
   selector: 'app-inserimento-richiesta',
@@ -18,7 +19,7 @@ export class InserimentoRichiestaComponent implements OnInit{
   insertRequestForm!: FormGroup;
   demand!: Demand;
 
-  constructor(private demandService: DemandService, private router: Router) {
+  constructor(private demandService: DemandService, private userAuthService: UserAuthService, private router: Router) {
 
   }
 
@@ -48,8 +49,9 @@ export class InserimentoRichiestaComponent implements OnInit{
   insertRequest() {
     
     this.demand = {
-      ...this.insertRequestForm.value
-    }
+      ...this.insertRequestForm.value,
+      userName: this.userAuthService.getInfo()
+    };
 
     this.demandService.insertNewDemandRequest(this.demand).pipe(
       catchError((err: HttpErrorResponse) => {

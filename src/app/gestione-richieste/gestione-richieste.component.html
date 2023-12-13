@@ -1,1 +1,30 @@
-<p>gestione-richieste works!</p>
+<div class="row mt-3 justify-content-center">
+    <div class="col-10">
+        <div class="card">
+            <div class="card-body"> 
+                <table class="table table-hover table-bordered table-center">
+                    <thead>
+                      <tr>
+                        <th scope="col">Type</th>
+                        <th scope="col">Date Request</th>
+                        <th scope="col"> Absence Date </th>
+                        <th scope="col">Deducted</th>
+                        <th scope="col">Note</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let demand of demands">
+                        <th scope="row">{{ demand.typeDemand }}</th>
+                        <td>{{ demand.dateDemand | date: 'dd/MM/yyyy' }}</td>
+                        <td>{{ demand.absenceDateStart | date: 'dd/MM/yyyy' }} <i *ngIf="demand.absenceDateEnd" class="bi bi-arrow-right"></i> {{ demand.absenceDateEnd | date: 'dd/MM/yyyy' }} </td>
+                        <td> <span *ngIf="demand.absenceDateEnd">{{ demand.absenceDateStart | daysBetweenDates: demand.absenceDateEnd }}</span> </td>
+                        <td> <button type="button" class="btn btn-dark btn-sm" *ngIf="demand.note"><i class="bi bi-card-text"></i> </button></td>
+                        <td> <span class="badge {{ demand.stateDemand | lowercase }}">{{ demand.stateDemand }}</span> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</div>

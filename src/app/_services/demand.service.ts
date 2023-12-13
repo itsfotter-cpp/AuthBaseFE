@@ -21,4 +21,8 @@ export class DemandService {
     return this.httpClient.post<boolean>(this.PATH_OF_API + "/insert-demand", demand);
   }
 
+  public getDemandsFromUser(userName: string) : Observable<Demand[]> {
+    return this.httpClient.get<Demand[]>(this.PATH_OF_API + "/manage-demands/" + userName);
+  }
+
 }

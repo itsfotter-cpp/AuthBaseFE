@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit{
     ).subscribe(
       (res: JwtResponse) => {
         this.jwtResponse = res;
+        this.userAuthService.setInfo(this.jwtResponse.user.userName)
         this.userAuthService.setRoles(this.jwtResponse.user.role);
         this.userAuthService.setToken(this.jwtResponse.jwtToken);              
         
