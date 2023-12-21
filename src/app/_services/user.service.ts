@@ -28,6 +28,10 @@ export class UserService {
       return this.httpClient.post<UserResponse>(this.PATH_OF_API + "/user/registerNewUser", userData);
   }
 
+  public getRoleByName(roleName: string) : Observable<number> {
+    return this.httpClient.get<number>(this.PATH_OF_API + "/role/role-by-name?roleName=" + roleName);
+  }
+
   public forUser() {
     return this.httpClient.get(this.PATH_OF_API + "/user/forUser", {responseType: "text"});
   }

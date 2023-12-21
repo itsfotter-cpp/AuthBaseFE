@@ -5,6 +5,7 @@ import { Demand } from '../model/demand';
 import { EMPTY, catchError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { UserService } from '../_services/user.service';
 
 
 @Component({
@@ -16,13 +17,13 @@ export class GestioneRichiesteComponent implements OnInit{
   
   demands: Demand[] = [];
 
-  constructor(private userAuthService: UserAuthService, private demandService: DemandService, private datePipe: DatePipe) {
+  constructor(private demandService: DemandService, private datePipe: DatePipe) {
 
   }
 
   ngOnInit(): void {
     
-    this.demandService.getDemandsFromUser(this.userAuthService.getInfo()).pipe(
+    this.demandService.getAllDemands().pipe(
       catchError((err: HttpErrorResponse) => {
         return EMPTY;
       })

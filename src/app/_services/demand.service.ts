@@ -22,7 +22,11 @@ export class DemandService {
   }
 
   public getDemandsFromUser(userName: string) : Observable<Demand[]> {
-    return this.httpClient.get<Demand[]>(this.PATH_OF_API + "/manage-demands/" + userName);
+    return this.httpClient.get<Demand[]>(this.PATH_OF_API + "/manage-demands-by-user/" + userName);
+  }
+
+  public getAllDemands() : Observable<Demand[]> {
+    return this.httpClient.get<Demand[]>(this.PATH_OF_API + "/manage-all-demands/");
   }
 
 }

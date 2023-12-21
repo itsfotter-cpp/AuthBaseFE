@@ -21,6 +21,7 @@ import { InserimentoRichiestaComponent } from './inserimento-richiesta/inserimen
 import { GestioneRichiesteComponent } from './gestione-richieste/gestione-richieste.component';
 import { DatePipe } from '@angular/common';
 import { DaysBetweenDatesPipe } from './shared/days-between-dates.pipe';
+import { RichiestePersonaliComponent } from './richieste-personali/richieste-personali.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { DaysBetweenDatesPipe } from './shared/days-between-dates.pipe';
         ForbiddenComponent,
         RegistrationComponent,
         InserimentoRichiestaComponent,
-        GestioneRichiesteComponent
+        GestioneRichiesteComponent,
+        RichiestePersonaliComponent
     ],
     providers: [
         {

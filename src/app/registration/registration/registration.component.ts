@@ -16,6 +16,7 @@ export class RegistrationComponent implements OnInit{
   
   registrationForm!: FormGroup;
   userRequest!: UserRequest;
+  roleId: number = 0;
 
   constructor(private userService: UserService, private router: Router) {
 
@@ -30,13 +31,24 @@ export class RegistrationComponent implements OnInit{
       userPassword: new FormControl('', [Validators.required]),
       rUserPassword: new FormControl('', [Validators.required])
     }, {validators: confirmPasswordValidator('userPassword', 'rUserPassword')})
+
+    this.userService.getRoleByName("user").pipe(
+      catchError((err: HttpErrorResponse) => {
+        return EMPTY;
+      })
+    ).subscribe(
+      (id) => {
+          this.roleId = id;
+      }
+    )
+
   }
 
   register() {
 
     this.userRequest = {
       ...this.registrationForm.value,
-      role: [{idRole: 2}]
+      role: [{idRole: this.roleId}]
     };
 
     this.userService.registerNewUser(this.userRequest).pipe(

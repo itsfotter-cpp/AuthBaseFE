@@ -9,6 +9,7 @@ import { AuthGuard } from './_auth/auth.guard';
 import { RegistrationComponent } from './registration/registration/registration.component';
 import { InserimentoRichiestaComponent } from './inserimento-richiesta/inserimento-richiesta.component';
 import { GestioneRichiesteComponent } from './gestione-richieste/gestione-richieste.component';
+import { RichiestePersonaliComponent } from './richieste-personali/richieste-personali.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'forbidden', component: ForbiddenComponent},
   {path: 'inserimento-richiesta', component: InserimentoRichiestaComponent, canActivate: [AuthGuard]},
-  {path: 'gestione-richieste', component: GestioneRichiesteComponent, canActivate: [AuthGuard]}
+  {path: 'gestione-richieste', component: GestioneRichiesteComponent, canActivate: [AuthGuard]},
+  {path: 'richieste-personali', component: RichiestePersonaliComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

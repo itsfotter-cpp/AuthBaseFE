@@ -10,7 +10,10 @@
             <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/gestione-richieste" *ngIf="isLoggedIn()">Gestione Presenze</a>
+            <a class="nav-link active" aria-current="page" routerLink="/richieste-personali" *ngIf="isLoggedIn()">Mie Richieste</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/gestione-richieste" *ngIf="isLoggedIn() && _userService.roleMatch(['admin'])">Gestione Richieste</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/inserimento-richiesta" *ngIf="isLoggedIn()">Inserimento Richiesta</a>
