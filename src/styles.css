@@ -1,1 +1,20 @@
 @import '~bootstrap-icons/font/bootstrap-icons.css';
+
+.pending {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-warning-rgb),var(--bs-bg-opacity))!important;
+}
+
+.approved {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-success-rgb),var(--bs-bg-opacity))!important;
+}
+
+.rejected {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-danger-rgb),var(--bs-bg-opacity))!important;
+}
+
+.table-center {
+    text-align: center;
+  }

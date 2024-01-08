@@ -7,22 +7,22 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+            <a class="nav-link" aria-current="page" routerLink="/home" routerLinkActive="active">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/richieste-personali" *ngIf="isLoggedIn()">Mie Richieste</a>
+            <a class="nav-link" aria-current="page" routerLink="/richieste-personali" routerLinkActive="active" *ngIf="isLoggedIn()">Mie Richieste</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/gestione-richieste" *ngIf="isLoggedIn() && _userService.roleMatch(['admin'])">Gestione Richieste</a>
+            <a class="nav-link" aria-current="page" routerLink="/gestione-richieste" routerLinkActive="active" *ngIf="isLoggedIn() && _userService.roleMatch(['admin'])">Gestione Richieste</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/inserimento-richiesta" *ngIf="isLoggedIn()">Inserimento Richiesta</a>
+            <a class="nav-link" aria-current="page" routerLink="/inserimento-richiesta" routerLinkActive="active" *ngIf="isLoggedIn()">Inserimento Richiesta</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/admin" *ngIf="_userService.roleMatch(['admin'])">Admin Dashboard</a>
+            <a class="nav-link" aria-current="page" routerLink="/admin" routerLinkActive="active" *ngIf="_userService.roleMatch(['admin'])">Admin Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/user" *ngIf="_userService.roleMatch(['user'])">User Dashboard</a>
+            <a class="nav-link" aria-current="page" routerLink="/user" routerLinkActive="active" *ngIf="_userService.roleMatch(['user'])">User Dashboard</a>
           </li>
         </ul>
         <button *ngIf="isLoggedIn() && _userService.roleMatch(['admin'])" type="button" class="btn btn-light mx-2" routerLink="/registration">Register</button>

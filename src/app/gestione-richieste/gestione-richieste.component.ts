@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAuthService } from '../_services/user-auth.service';
 import { DemandService } from '../_services/demand.service';
 import { Demand } from '../model/demand';
 import { EMPTY, catchError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
-import { UserService } from '../_services/user.service';
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDialogComponent } from '../shared/modal-dialog/modal-dialog.component';
 
 @Component({
   selector: 'app-gestione-richieste',
@@ -17,7 +16,10 @@ export class GestioneRichiesteComponent implements OnInit{
   
   demands: Demand[] = [];
 
-  constructor(private demandService: DemandService, private datePipe: DatePipe) {
+  constructor(
+      private demandService: DemandService,
+      private datePipe: DatePipe,
+      private modalService: NgbModal) {
 
   }
 
@@ -33,6 +35,21 @@ export class GestioneRichiesteComponent implements OnInit{
       }
     );
 
+  }
+
+  openModal() {
+    const modalRef = this.modalService.open(ModalDialogComponent);
+    modalRef.componentInstance.title = "Note";
+
+    modalRef.result.then(
+      (result) => {
+        console.log(`Modale chiuso con risultato: ${result}`);
+      },
+      (reason) => {
+        console.log(`Modale chiuso con motivo: ${reason}`);
+      }
+    );
+    
   }
 
 }

@@ -1,5 +1,4 @@
 import { Time } from "@angular/common";
-import { StateDemand } from "./state-demand";
 
 export interface Demand {
     idDemand: number;

@@ -22,6 +22,8 @@ import { GestioneRichiesteComponent } from './gestione-richieste/gestione-richie
 import { DatePipe } from '@angular/common';
 import { DaysBetweenDatesPipe } from './shared/days-between-dates.pipe';
 import { RichiestePersonaliComponent } from './richieste-personali/richieste-personali.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MyModalModule } from './shared/modal-dialog.module';
 
 @NgModule({
     declarations: [
@@ -35,7 +37,7 @@ import { RichiestePersonaliComponent } from './richieste-personali/richieste-per
         RegistrationComponent,
         InserimentoRichiestaComponent,
         GestioneRichiesteComponent,
-        RichiestePersonaliComponent
+        RichiestePersonaliComponent,
     ],
     providers: [
         {
@@ -59,7 +61,9 @@ import { RichiestePersonaliComponent } from './richieste-personali/richieste-per
             timeOut: 4000,
             positionClass: 'toast-top-center'
         }),
-        DaysBetweenDatesPipe
+        DaysBetweenDatesPipe,
+        NgbModule,
+        MyModalModule
     ]
 })
 export class AppModule { }
